@@ -1,0 +1,31 @@
+{% extends "./projet/Layouts/layout.html.twig" %}
+
+{% block vue %}
+{{ parent() }}
+    <table>
+        <tbody>
+        <tr>
+            <th>Login</th>
+            <th>Pwd</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Date de Naissance</th>
+            <th>Statut</th>
+            <th>Action</th>
+        </tr>
+        {% for entry in users %}
+        <tr>
+            <td>{{ entry.identifiant }}</td>
+            <td>{{ entry.motdepasse }}</td>
+            <td>{{ entry.nom }}</td>
+            <td>{{ entry.prenom }}</td>
+            <td>{{ entry.anniversaire | date('Y-m-d') }}</td>
+            <td>{{ entry.isadmin }}</td>
+            <td><a href="{{ path('projet_suppression_user', {idUser : entry.pk}) }}">Supprimer</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+{# Berthelot Yann #}

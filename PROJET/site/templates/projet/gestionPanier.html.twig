@@ -1,0 +1,53 @@
+{% extends "./projet/Layouts/layout.html.twig" %}
+
+{% block vue %}
+    {{ parent() }}
+    <h2>Panier</h2>
+    <table>
+        <tbody>
+            <tr>
+                <th>Libellé</th>
+                <th>Prix Unit.</th>
+                <th>Quantite</th>
+                <th>Prix Total</th>
+                <th>Action</th>
+            </tr>
+    {% for article in user.panier %}
+            <tr>
+                <td>{{ article.produit.libelle }}</td>
+                <td>{{ article.produit.prix }}</td>
+                <td>{{ article.quantite }}</td>
+                <td>
+                    {{ article.produit.prix * article.quantite }}
+                </td>
+                <td><a href="{{ path('projet_suppression_panier', {idPanier : article.id}) }}">Supprimer</a></td>
+            </tr>
+    {% endfor %}
+        <tr>
+            <td>Total</td>
+            <td></td>
+            <td>
+                {% set quantiteTotal = 0 %}
+                {% for article in user.panier %}
+                    {% set quantiteTotal = quantiteTotal + article.quantite %}
+                {% endfor %}
+                {{ quantiteTotal }}
+            </td>
+            <td>
+                {% set prixTotal = 0 %}
+                {% for article in user.panier %}
+                    {% set prixTotal = prixTotal + article.produit.prix * article.quantite %}
+                {% endfor %}
+                {{ prixTotal }}
+            </td>
+        </tr>
+        <tr>
+            <td><a href="{{ path('projet_vider_panier', {idUser :user.pk }) }}">Vider</a></td>
+            <td><a href="{{ path('projet_acheter_panier', {idUser :user.pk }) }}">Acheter</a></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
+{# Berthelot Yann #}

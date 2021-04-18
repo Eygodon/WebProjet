@@ -1,0 +1,12 @@
+{% extends "./projet/Layouts/layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/accueil.css') }}" rel="stylesheet"/>
+
+{% endblock stylesheets %}
+{% block vue %}
+    {{ parent() }}
+    <h1> Bienvenue, vous êtes connecté en tant que {{ status }}</h1>
+    <h2> SERVICE : Shrekos à l'envers donne : {{ serviceResult }}</h2>
+{% endblock %}
+{# Berthelot Yann #}

@@ -1,0 +1,59 @@
+{% extends './base.html.twig' %}
+{% block stylesheets  %}
+    {{ parent() }}
+    <link href="{{ asset('css/layout.css') }}" rel="stylesheet"/>
+
+{% endblock stylesheets %}
+
+{% block body %}
+    <div id="header">
+        {% block header %}
+            {% block banner %}
+                {% if user == null  %}
+                    <img src="{{ asset('Images/guest_banner.jpg') }}" alt="guestbanner"/>
+                {% elseif user.getIsadmin() == 1 %}
+                    <img src="{{ asset('Images/admin_banner.jpg') }}" alt="adminbanner"/>
+
+                {% else %}
+                    <img src="{{ asset('Images/user_banner.jpg') }}" alt="banneruser"/>
+
+                {% endif %}
+            {% endblock %}
+            {% block menu %}
+                <ul><h3>Menu</h3>
+                    <li><a href="{{ path('projet_accueil') }}">Accueil</a></li>
+                {% if user == null  %}
+                    <li><a href="{{ path('projet_connexion')}}">Connexion</a></li>
+                    <li><a href="{{ path('projet_creation_compte')}}">Creez votre compte</a> </li>
+                {% elseif user.getIsadmin() == 1 %}
+                    <li><a href="{{ path('projet_deconnexion')}}">Deconnexion</a> </li>
+                    <li><a href="{{ path('projet_produit_ajout') }}">Ajouter un produit</a></li>
+                    <li><a href="{{ path('projet_user_gestion') }}">Gerer les utilisateurs</a></li>
+                    <li><a href="https://fr.wikipedia.org/wiki/Amour_et_Amn%C3%A9sie"> Lisez cette comédie</a> </li>
+
+                {% else %}
+                    <li><a href="{{ path('projet_deconnexion')}}">Deconnexion</a> </li>
+                    <li><a href="{{ path('projet_modification_compte') }}">Modifier votre compte</a></li>
+                    <li><a href="{{ path('projet_produits_afficher') }}">Lister nos produits</a></li>
+                    <li><a href="{{ path('projet_gestion_panier') }}">Votre panier</a></li>
+                {% endif %}
+                </ul>
+            {% endblock %}
+        {% endblock header %}
+    </div>
+
+    <div id="vue">
+        {% block vue %}
+            <ul>
+            {% for msg in app.session.flashBag.get("info") %}
+                <li>{{ msg }}</li>
+            {% endfor %}
+            </ul>{% endblock %}
+    </div>
+
+    <div id="footer">
+        {% block footer %}
+            <img src="{{ asset('Images/footer.jpg') }}" alt="footbanner"/>
+        {% endblock %}
+    </div>
+{% endblock body %}

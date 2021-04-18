@@ -1,0 +1,34 @@
+{% extends "./projet/Layouts/layout.html.twig" %}
+{% block vue %}
+    {{ parent() }}
+<form action="{{ path('projet_ajout_panier') }}" method="post">
+    <table>
+        <tr>
+            <th>Libellé</th>
+            <th>Prix</th>
+            <th>Stock</th>
+            <th>choix</th>
+        </tr>
+        {% for produit in produits %}
+        <tr>
+            <td>{{ produit.libelle }}</td>
+            <td>{{ produit.prix }}</td>
+            <td>{{ produit.quantity }}</td>
+            <td>
+                    <select name='quantite{{ produit.id }}' size="1">
+                        {% for i in 0..produit.quantity %}
+                        <option>{{ i }}</option>
+                        {% endfor %}
+                    </select>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="4">
+                <input type="submit" value="Commander">
+            </td>
+        </tr>
+    </table>
+</form>
+{% endblock %}
+{# Berthelot Yann #}

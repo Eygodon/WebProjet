@@ -1,0 +1,27 @@
+site/config:
+  services.yaml
+  packages/dev/web_profiler.yaml
+  packages/dev/debug.yaml
+  packages/dev/monolog.yaml
+  packages/dev/swiftmailer.yaml
+  packages/prod/deprecations.yaml
+  packages/prod/doctrine.yaml
+  packages/prod/monolog.yaml
+  packages/prod/routing.yaml
+  packages/test/doctrine.yaml
+  packages/test/framework.yaml
+  packages/test/monolog.yaml
+  packages/test/swiftmailer.yaml
+  packages/test/twig.yaml
+  packages/test/validator.yaml
+  packages/test/web_profiler.yaml
+  packages/security.yaml
+  packages/cache.yaml
+  packages/doctrine.yaml
+  packages/doctrine_migrations.yaml
+  packages/framework.yaml
+  packages/routing.yaml
+  packages/sensio_framework_extra.yaml
+  packages/swiftmailer.yaml
+  packages/twig.yaml
+  packages/validator.ml
