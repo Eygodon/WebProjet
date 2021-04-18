@@ -7,6 +7,14 @@
   </tr>
 </table>
 
+## Table des matières 
+1. [Erratum](##Erratum)
+2. [Contexte](##Contexte)
+3. [Organisation interne](##Organisation interne)
+4. [Tuto Service ](##Tuto Service)
+5. [Points particuliers et difficultés](##Points particuliers et difficultés)
+
+
 ## Erratum
 &nbsp; Je commence ce rapport en m'excusant pour l'absence de binôme sur ce groupe, en effet, avec mon déménagement à Bordeaux et l'organisation de mon stage en Italie dans un timing très serré, j'ai commencé le projet tard (14/04) et l'ai fait le plus rapidement possible sans attendre une réponse tardive des personnes auxquelles j'ai proposé de se joindre à moi. Je m'attend à être sancticonné et le but de cette explication n'est pas de l'éviter, je souhaite juste expliquer la situation car je pense qu'il est toujours préférable de se justifier afin de montrer que ce n'est pas simplement sur un coup de tête que j'ai fait ce projet en monôme malgré la consigne.
 
@@ -80,7 +88,7 @@ La hiérarchie du code, elle, est la suivante :
 * `site/sqlite`  : Contient la base de donnée utilisée dans tout le site
 * `site/src`     : Le gros du site, contient le controller, les Tables, les formulaires, le service et les templates créés
 
-## Tuto Service 
+## Tuto Service
 &nbsp; Creer son propre service symfony est plutôt simple : 
 1. Creer sa classe php, de préférence dans un répertoire dédié
 ![Capture](https://user-images.githubusercontent.com/47954086/115143733-5d1a6600-a049-11eb-95fe-a085a55a0886.JPG)
