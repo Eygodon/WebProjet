@@ -10,4 +10,4 @@ Le but de ce projet est de creer un site web de vente permettant de manipuler un
 ## Organisation interne
 
 Le schéma de la base de donnée est le suivant : 
-<center> ![schema](/schema.jpg) </center>
+![schema](/schema.jpg?raw=true)
