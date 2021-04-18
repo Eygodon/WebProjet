@@ -16,3 +16,55 @@ Un client commandant 3 articles générera donc 3 lignes dans la table `Panier`.
 </p>
 
 La hiérarchie du code, elle, est la suivante : 
+```
+.
+├── composer.json
+├── composer.lock
+├── public
+│   ├── css
+│   │   ├── accueil.css
+│   │   ├── base.css
+│   │   └── layout.css
+│   ├── Images
+│   │   ├── admin_banner.jpg
+│   │   ├── footer.jpg
+│   │   ├── guest_banner.jpg
+│   │   └── user_banner.jpg
+│   └── index.php
+├── sqlite
+│   └── data.db
+├── src
+│   ├── Controller
+│   │   └── ProjetController.php
+│   ├── DataFixtures
+│   │   └── AppFixtures.php
+│   ├── Entity
+│   │   ├── Panier.php
+│   │   ├── Produit.php
+│   │   └── Utilisateurs.php
+│   ├── Form
+│   │   ├── AjoutProduitType.php
+│   │   └── CreationCompteType.php
+│   ├── Kernel.php
+│   ├── Repository
+│   │   ├── PanierRepository.php
+│   │   ├── ProduitRepository.php
+│   │   └── UtilisateursRepository.php
+│   └── Service
+│       └── myService.php
+├── symfony.lock
+└── templates
+    ├── base.html.twig
+    └── projet
+        ├── Accueil.html.twig
+        ├── AjoutProduit.html.twig
+        ├── connexion.html.twig
+        ├── creationCompte.html.twig
+        ├── gestionPanier.html.twig
+        ├── GestionUsers.html.twig
+        ├── index.html.twig
+        ├── Layouts
+        │   └── layout.html.twig
+        └── listProduits.html.twig
+```
+
