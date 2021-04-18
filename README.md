@@ -1,7 +1,14 @@
 # Projet de Web - Yann Berthelot
 
+<table>
+  <tr>
+    <td><img align="center" src="https://upload.wikimedia.org/wikipedia/fr/c/c6/Universit%C3%A9_de_Poitiers_%28logo_2012%29.png"/></td>
+    <td><img align="center" src="https://symfony.com/logos/symfony_black_03.png"/></td>
+  </tr>
+</table>
+
 ## Erratum
-&nbsp; Je voudrais commencer ce rapport en m'excusant pour l'absence de binôme sur ce groupe, en effet, avec mon déménagement à Bordeaux et l'organisation de mon stage en Italie dans un timing très serré, j'ai commencé le projet tard (14/04) et l'ai fait le plus rapidement possible sans attendre une réponse tardive des personnes auxquelles j'ai proposé de se joindre à moi. Je m'attend à être sancticonné et le but de cette explication n'est pas de l'éviter, je souhaite juste expliquer la situation car je pense qu'il est toujours préférable de se justifier afin de montrer que ce n'est pas simplement sur un coup de tête que j'ai fait ce projet en monôme malgré la consigne.
+&nbsp; Je commence ce rapport en m'excusant pour l'absence de binôme sur ce groupe, en effet, avec mon déménagement à Bordeaux et l'organisation de mon stage en Italie dans un timing très serré, j'ai commencé le projet tard (14/04) et l'ai fait le plus rapidement possible sans attendre une réponse tardive des personnes auxquelles j'ai proposé de se joindre à moi. Je m'attend à être sancticonné et le but de cette explication n'est pas de l'éviter, je souhaite juste expliquer la situation car je pense qu'il est toujours préférable de se justifier afin de montrer que ce n'est pas simplement sur un coup de tête que j'ai fait ce projet en monôme malgré la consigne.
 
 ## Contexte
 
@@ -38,11 +45,11 @@ La hiérarchie du code, elle, est la suivante :
 │   │   └── ProjetController.php
 │   ├── DataFixtures
 │   │   └── AppFixtures.php
-│   ├── Entity
+│   ├── Entity // les tables de la BDD
 │   │   ├── Panier.php
 │   │   ├── Produit.php
 │   │   └── Utilisateurs.php
-│   ├── Form
+│   ├── Form //les formulaires de creation de produit et de compte utilisateur
 │   │   ├── AjoutProduitType.php
 │   │   └── CreationCompteType.php
 │   ├── Kernel.php
@@ -50,10 +57,10 @@ La hiérarchie du code, elle, est la suivante :
 │   │   ├── PanierRepository.php
 │   │   ├── ProduitRepository.php
 │   │   └── UtilisateursRepository.php
-│   └── Service
+│   └── Service // un dossier créé à la main tout comme le service qu'il contient
 │       └── myService.php
 ├── symfony.lock
-└── templates
+└── templates // les templates contenues dans 'projet' héritent de celui dans 'layouts' qui hérite de base.html.twig
     ├── base.html.twig
     └── projet
         ├── Accueil.html.twig
@@ -67,4 +74,49 @@ La hiérarchie du code, elle, est la suivante :
         │   └── layout.html.twig
         └── listProduits.html.twig
 ```
+&nbsp;Les points importants sont les suivants : 
+* `service.yaml` : Le fichier conteannt la varibale globale `id` qui gère l'authentification
+* `site/public`  : Contient les images et feuilles de styles utilisées 
+* `site/sqlite`  : Contient la base de donnée utilisée dans tout le site
+* `site/src`     : Le gros du site, contient le controller, les Tables, les formulaires, le service et les templates créés
 
+## Tuto Service 
+&nbsp; Creer son propre service symfony est plutôt simple : 
+1. Creer sa classe php, de préférence dans un répertoire dédié
+![Capture](https://user-images.githubusercontent.com/47954086/115143733-5d1a6600-a049-11eb-95fe-a085a55a0886.JPG)
+3. On ajoute sa fonction dans le code généré, pour un service qui renvoi l'inverse d'un string on obtient : 
+```
+<?php
+
+
+namespace App\Service;
+
+
+class myService
+{
+    public function invertMyMessage(): string
+    {
+        $source = "Shrekos";
+        return strrev($source);
+    }
+}
+```
+3. on l'inclut dans une action du controller en passant le service en argument : 
+```
+use App\Service\myService
+class ProjetController extends AbstractController
+{
+    /..
+    public function accueilAction(myService $myservice): Response
+    {
+       //..
+        $args = array
+        (
+            'status' => $status,
+            'user' => $user,
+            'serviceResult' => $myservice->invertMyMessage()
+        );
+        return $this->render('projet/accueil.html.twig', $args);
+    }
+    //..
+```
