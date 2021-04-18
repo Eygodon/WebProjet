@@ -120,3 +120,8 @@ class ProjetController extends AbstractController
     }
     //..
 ```
+
+## Points particuliers et difficultés
+&nbsp; J'ai pu témoigner de la rapidité et de la puissance du framework grâce à ce projet, en effet malgré le commencement tardif du projet, j'ai vité été rassuré en voyant qu'au bout de 5 heures le plus gros était fait malgré les difficultés rencontrées : j'ai dû recommencer 2 fois le projet à cause de mauvaises manipulations sur doctrine qui m'empêchaient de migrer de version que ce soit pour une version plus récente ou un retour en arrière.
+J'ai égalemment rencontré un problème avec les commentaires des Tables, j'ai en effet utilisé l'option `Comment` mais lors de la génération de code SQL ils n'ont pas été retranscrits. J'ai lu que l'option n'était prise en compte que lors de la re-création de la table mais avec les difficultés précédentes je n'ai pas tenté le diable.
+Le seul point particulier que je peut évoquer est vraiment les relations entre entités qui furent un gain de temps considérable et ce fut très satisfaisant de s'en servir une fois bien mises en place.
