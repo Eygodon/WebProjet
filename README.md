@@ -10,4 +10,9 @@ Le but de ce projet est de creer un site web de vente permettant de manipuler un
 ## Organisation interne
 
 Le schéma de la base de donnée est le suivant : 
-![schema](schema.jpg)
+![schema](schema.JPG)
+<p>&nbsp; Nous avons 2 relations entre l'utilisateur et un panier et un produit eet un panier. Le panier est un peu mal nommé, en effet un `panier` est plus exactement une commande, une ligne de la table référence un utilisateur, un produit et contient la quantité souhaitée. 
+Un client commandant 3 articles générera donc 3 lignes dans la table `Panier`. L'avantage des relations mises en place est de pouvoir acceder à n'importe quel champ du produit ou et du client référencé dans la commande, ce qui simplifie grandement la gestion et l'affichage du panier notamment.
+</p>
+
+La hiérarchie du code, elle, est la suivante : 
